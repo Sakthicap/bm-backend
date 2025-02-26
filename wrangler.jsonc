@@ -1,15 +1,19 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "bookmeet",
+  "name": "bm",
   "main": "src/index.ts",
   "compatibility_date": "2025-02-26",
+  "compatibility_flags": ["nodejs_compat"], 
   "d1_databases": [
     {
-      "binding": "DB",
+      "binding": "D1",
       "database_name": "bm-user",
       "database_id": "afb4c9c2-0abf-4d06-8a0e-ca582fd7e99d"
     }
-   ]
+   ],
+   "vars": {
+    "JWT_SECRET": "your-secret-key-here"
+  }
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],

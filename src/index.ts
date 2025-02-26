@@ -1,12 +1,12 @@
 import { Hono } from 'hono'
+import authRoutes from './auth/regiser'
 
 const app = new Hono()
 
 export type Env = {
   DB:D1Database
 }
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+
+app.route('/auth', authRoutes)
 
 export default app
