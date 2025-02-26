@@ -1,0 +1,9 @@
+{
+    "out": "drizzle/migrations",
+    "schema": "./src/db/schema.ts",
+    "driver": "d1-http",
+    "dialect": "sqlite",
+    "dbCredentials":{
+       "url":  "afb4c9c2-0abf-4d06-8a0e-ca582fd7e99d"
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bookmeet",
+  "scripts": {
+    "dev": "wrangler dev",
+    "db:generate": "drizzle-kit generate",
+    "db:up": "drizzle-kit up:sqlite",
+    "deploy": "wrangler deploy --minify"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "drizzle-orm": "^0.40.0",
+    "hono": "^4.7.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250214.0",
+    "drizzle-kit": "^0.30.5",
+    "wrangler": "^3.109.2"
+  }
+}
