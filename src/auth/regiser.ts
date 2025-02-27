@@ -4,8 +4,19 @@ import { eq } from 'drizzle-orm'
 import { hash } from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { UserTabel } from '../db/schema'
+import { cors } from 'hono/cors' // Import CORS middleware
 
-const app = new Hono<{ Bindings: { D1: D1Database; JWT_SECRET: string } }>() // Match binding name with wrangler.toml
+const app = new Hono<{ Bindings: { D1: D1Database; JWT_SECRET: string } }>()
+
+// Apply CORS middleware
+app.use(
+  '*', // Apply to all routes
+  cors({
+    origin: '*', // Allow all origins (change this to specific domains if needed)
+    allowMethods: ['POST', 'GET', 'OPTIONS'], // Allowed HTTP methods
+    allowHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  })
+)
 
 app.post('/register', async (c) => {
   try {
@@ -15,7 +26,7 @@ app.post('/register', async (c) => {
       return c.json({ error: 'Email and password are required' }, 400)
     }
 
-    const db = drizzle(c.env.D1) // Use the correct binding here
+    const db = drizzle(c.env.D1)
 
     const existingUser = await db.select().from(UserTabel).where(eq(UserTabel.email, email))
     if (existingUser.length > 0) {
@@ -30,19 +41,18 @@ app.post('/register', async (c) => {
 
     return c.json({ message: 'User registered successfully', token })
   } catch (error) {
-    console.error(error)  // Log the full error for debugging
+    console.error(error)
 
-    // Ensure 'error' is an instance of Error before accessing 'message'
     if (error instanceof Error) {
       return c.json({ error: 'Something went wrong', details: error.message }, 500)
     }
 
-    // Fallback for unknown errors
     return c.json({ error: 'Something went wrong' }, 500)
   }
 })
 
 export default app
+
 
 // import { Hono } from 'hono'
 // import { drizzle } from 'drizzle-orm/d1'
