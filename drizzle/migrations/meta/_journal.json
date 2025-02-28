@@ -8,6 +8,34 @@
       "when": 1740557943391,
       "tag": "0000_low_ulik",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1740678258401,
+      "tag": "0001_sturdy_lord_hawal",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1740680079049,
+      "tag": "0002_lumpy_toad_men",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1740680406724,
+      "tag": "0003_eager_gorgon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1740728872116,
+      "tag": "0004_ancient_doctor_spectrum",
+      "breakpoints": true
     }
   ]
 }

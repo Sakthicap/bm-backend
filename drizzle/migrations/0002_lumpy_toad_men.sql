@@ -1,0 +1,1 @@
+ALTER TABLE `booking` ADD `name` text NOT NULL;
